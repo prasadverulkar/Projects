@@ -2,9 +2,9 @@ import os
 import sys
 # sys.path.append(r'C:\Udemy\Projects\ML Projects\Student Performance')
 # Add src directory to sys.path
-# current_dir = os.path.dirname(os.path.abspath(__file__))
-# parent_dir = os.path.dirname(current_dir)
-# sys.path.append(parent_dir)
+current_dir = os.path.dirname(os.path.abspath(__file__))
+parent_dir = os.path.dirname(current_dir)
+sys.path.append(parent_dir)
 from exception import CustomException
 from logger import logging
 # os.chdir(r'C:\Udemy\Projects\ML Projects\Student Performance')
@@ -13,6 +13,9 @@ from sklearn.model_selection import train_test_split
 from dataclasses import dataclass
 from components.data_transformation import DataTransformation
 from components.data_transformation import DataTransformationConfig
+
+from src.components.model_trainer import ModelTrainerConfig
+from src.components.model_trainer import ModelTrainer
 
 @dataclass
 # To declare variables within class
@@ -56,7 +59,10 @@ class DataIngestion:
 
 if __name__=="__main__":
     obj=DataIngestion()
-    train_data_path,test_data_path = obj.initiate_data_ingestion()
+    train_data,test_data=obj.initiate_data_ingestion()
 
     data_transformation=DataTransformation()
-    data_transformation.initiate_data_transformation(train_data_path,test_data_path)
+    train_arr,test_arr,_=data_transformation.initiate_data_transformation(train_data,test_data)
+    pd.DataFrame(test_arr).to_csv(r'artifacts\transformed_test.csv',index=False,header=True)
+    modeltrainer=ModelTrainer()
+    print(modeltrainer.initiate_model_trainer(train_arr,test_arr))
