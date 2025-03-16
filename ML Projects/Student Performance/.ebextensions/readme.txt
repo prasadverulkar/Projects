@@ -40,3 +40,8 @@ Key components in python.config file:
 - Format is give as --> module_name:application_object
 - module_name = Name of the Python file (File name without .py extension), 
   application_object = Name of the Flask or Django app object inside that file
+
+
+If while creating an environment in elastic beanstalk, following error arises then follow instructions given in link
+"The instance profile aws-elasticbeanstalk-ec2-role associated with the environment does not exist"
+"https://www.reddit.com/r/aws/comments/13f2jdg/error_the_instance_profile/?rdt=34213"
