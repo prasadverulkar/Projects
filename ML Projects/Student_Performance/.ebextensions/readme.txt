@@ -45,3 +45,6 @@ Key components in python.config file:
 If while creating an environment in elastic beanstalk, following error arises then follow instructions given in link
 "The instance profile aws-elasticbeanstalk-ec2-role associated with the environment does not exist"
 "https://www.reddit.com/r/aws/comments/13f2jdg/error_the_instance_profile/?rdt=34213"
+
+Youtube reference video to create an application on aws beanstalk
+https://www.youtube.com/watch?v=rVYFZ_gCYqw
